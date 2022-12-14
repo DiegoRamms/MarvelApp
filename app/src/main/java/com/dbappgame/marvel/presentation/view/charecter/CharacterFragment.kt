@@ -54,6 +54,12 @@ class CharacterFragment : Fragment(), CharactersView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        
+        characters = savedInstanceState?.parcelableArrayList("LIST")
+        characters?.let { showInfo(it) }
+        characters.ifNull {
+            presenter.getData()
+        }
 
     }
 
@@ -96,12 +102,7 @@ class CharacterFragment : Fragment(), CharactersView {
     }
 
 
-    override fun onStart() {
-        super.onStart()
-        characters.ifNull {
-            presenter.getData()
-        }
-    }
+
 
 
     private fun showInfo(list: List<MarvelCharacter>) {
@@ -113,7 +114,6 @@ class CharacterFragment : Fragment(), CharactersView {
     }
 
     private fun onClickItemComics(marvelCharacter: MarvelCharacter) {
-        requireContext().showLongToast(marvelCharacter.toString())
         charactersListener?.onClickComics(marvelCharacter)
     }
 
