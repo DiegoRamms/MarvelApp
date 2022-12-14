@@ -1,28 +1,22 @@
 package com.dbappgame.marvel.core.di
 
-import com.dbappgame.marvel.AuthInterceptor
+import com.dbappgame.marvel.core.security.AuthInterceptor
 import com.dbappgame.marvel.BuildConfig
-import com.dbappgame.marvel.data.service.MarvelService
+import com.dbappgame.marvel.data.datasource.networkdatasource.service.MarvelService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.math.BigInteger
-import java.security.MessageDigest
-import java.sql.Timestamp
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule{
-
-
 
     @Provides
     @Singleton

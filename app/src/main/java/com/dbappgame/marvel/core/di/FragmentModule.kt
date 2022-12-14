@@ -1,8 +1,10 @@
 package com.dbappgame.marvel.core.di
 
 import androidx.fragment.app.Fragment
-import com.dbappgame.marvel.presentation.CharacterFragment
-import com.dbappgame.marvel.presentation.view.CharactersView
+import com.dbappgame.marvel.presentation.view.charecter.CharacterFragment
+import com.dbappgame.marvel.presentation.view.charecter.CharactersView
+import com.dbappgame.marvel.presentation.view.comics.ComicsFragment
+import com.dbappgame.marvel.presentation.view.comics.ComicsView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -14,12 +16,20 @@ import dagger.hilt.android.components.FragmentComponent
 abstract class FragmentModule {
 
     @Binds
-    abstract fun bindFragment(fragment: CharacterFragment): CharactersView
+    abstract fun bindCharactersView(fragment: CharacterFragment): CharactersView
+
+    @Binds
+    abstract fun bindComicsView(fragment: ComicsFragment): ComicsView
 
     companion object{
         @Provides
-        fun bindActivity(fragment: Fragment): CharacterFragment {
+        fun bindCharacterFragment(fragment: Fragment): CharacterFragment {
             return fragment as CharacterFragment
+        }
+
+        @Provides
+        fun bindComicsFragment(fragment: Fragment): ComicsFragment {
+            return fragment as ComicsFragment
         }
     }
 

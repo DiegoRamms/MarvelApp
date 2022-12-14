@@ -1,8 +1,11 @@
-package com.dbappgame.marvel.presentation.presenter
+package com.dbappgame.marvel.presentation.presenter.character
 
+import android.util.Log
 import com.dbappgame.marvel.domain.model.BaseResult
+import com.dbappgame.marvel.domain.model.Comic
+import com.dbappgame.marvel.domain.model.MarvelCharacter
 import com.dbappgame.marvel.domain.repository.MarvelRepository
-import com.dbappgame.marvel.presentation.view.CharactersView
+import com.dbappgame.marvel.presentation.view.charecter.CharactersView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
@@ -18,14 +21,22 @@ class CharactersPresenterImp @Inject constructor(
 
     override fun getData() {
 
+
         view.loadView(true)
-        val disposable = repository.getData()
+        disposable = repository.getCharacters()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess{if (it is BaseResult.Success) {
+                Log.e("data",it.data.toString())
+                repository.insertData(it.data).subscribeOn(Schedulers.io()).subscribe({},{})
+            }}
             .subscribe(
                 { value ->
                     when (value) {
-                        is BaseResult.Success -> view.showList(value.data)
+                        is BaseResult.Success -> {
+
+                            view.setData(value.data)
+                        }
                         is BaseResult.Error -> view.showError(value.message)
                     }
                     view.loadView(false)
@@ -36,7 +47,7 @@ class CharactersPresenterImp @Inject constructor(
                 }
             )
 
-        CompositeDisposable().add(disposable)
+        disposable?.let { CompositeDisposable().add(it) }
     }
 
     override fun onDestroy() {

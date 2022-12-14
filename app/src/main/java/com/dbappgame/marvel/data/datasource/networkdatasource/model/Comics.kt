@@ -1,9 +1,9 @@
-package com.dbappgame.marvel.data.model
+package com.dbappgame.marvel.data.datasource.networkdatasource.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Series(
+data class ComicsDTO(
     @SerializedName("available")
     val available: Int,
     @SerializedName("collectionURI")
