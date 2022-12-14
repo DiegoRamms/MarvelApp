@@ -3,7 +3,6 @@ package com.dbappgame.marvel.presentation.view.charecter
 import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,8 +55,6 @@ class CharacterFragment : Fragment(), CharactersView {
         super.onViewCreated(view, savedInstanceState)
         initView()
 
-        characters.ifNull { presenter.getData() }
-
     }
 
     private fun initView() {
@@ -69,7 +66,7 @@ class CharacterFragment : Fragment(), CharactersView {
 
 
     override fun loadView(isLoading: Boolean) {
-        //binding?.loading?.showOrGone(isLoading)
+        binding?.loading?.root?.showOrGone(isLoading)
     }
 
     override fun setData(list: List<MarvelCharacter>) {
@@ -96,6 +93,14 @@ class CharacterFragment : Fragment(), CharactersView {
         super.onViewStateRestored(savedInstanceState)
         characters = savedInstanceState?.parcelableArrayList("LIST")
         characters?.let { showInfo(it) }
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        characters.ifNull {
+            presenter.getData()
+        }
     }
 
 
