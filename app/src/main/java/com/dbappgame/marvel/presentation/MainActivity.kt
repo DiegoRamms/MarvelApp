@@ -17,7 +17,6 @@ import java.util.ArrayList
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
 
-
     lateinit var binding: ActivityMainBinding
     var charactersFragment: CharacterFragment? = null
     var comicsFragment: ComicsFragment? = null
