@@ -42,9 +42,9 @@ class CharacterAdapter (val onClickSeries: (MarvelCharacter) -> Unit,val onClick
                 name.text = marvelCharacter.name
                 description.text = marvelCharacter.description
 
-                binding.tvSeries.setOnClickListener { onClickComic(marvelCharacter) }
+                binding.tvSeries.setOnClickListener { onClickSeries(marvelCharacter) }
                 binding.tvComics.setOnClickListener { onClickComic(marvelCharacter) }
-                binding.tvDetail.setOnClickListener { onClickComic(marvelCharacter) }
+                binding.tvDetail.setOnClickListener { onClickDetail(marvelCharacter) }
 
             }
         }

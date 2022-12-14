@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dbappgame.marvel.core.utils.ifNull
 import com.dbappgame.marvel.core.utils.parcelableArrayList
 import com.dbappgame.marvel.core.utils.showLongToast
+import com.dbappgame.marvel.core.utils.showOrGone
 import com.dbappgame.marvel.databinding.FragmentCharactersBinding
 import com.dbappgame.marvel.domain.model.MarvelCharacter
 import com.dbappgame.marvel.presentation.adapter.CharacterAdapter
@@ -68,7 +69,7 @@ class CharacterFragment : Fragment(), CharactersView {
 
 
     override fun loadView(isLoading: Boolean) {
-        Log.e("Loading", isLoading.toString())
+        //binding?.loading?.showOrGone(isLoading)
     }
 
     override fun setData(list: List<MarvelCharacter>) {
