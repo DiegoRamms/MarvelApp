@@ -1,4 +1,4 @@
-package com.dbappgame.marvel.data.model
+package com.dbappgame.marvel.data.datasource.networkdatasource.model
 
 
 import com.google.gson.annotations.SerializedName

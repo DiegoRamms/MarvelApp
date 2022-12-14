@@ -1,5 +1,6 @@
-package com.dbappgame.marvel
+package com.dbappgame.marvel.core.security
 
+import com.dbappgame.marvel.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.math.BigInteger

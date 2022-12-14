@@ -1,25 +1,25 @@
-package com.dbappgame.marvel.data.model
+package com.dbappgame.marvel.data.datasource.networkdatasource.model
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Result(
     @SerializedName("comics")
-    val comics: Comics,
+    val comicsDTO: ComicsDTO,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("events")
     val events: Events,
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("modified")
-    val modified: String,
+    val modified: String?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("resourceURI")
     val resourceURI: String,
     @SerializedName("series")
-    val series: Series,
+    val seriesDTO: SeriesDTO,
     @SerializedName("stories")
     val stories: Stories,
     @SerializedName("thumbnail")
