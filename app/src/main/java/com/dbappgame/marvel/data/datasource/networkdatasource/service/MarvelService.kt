@@ -8,4 +8,5 @@ import retrofit2.http.GET
 interface MarvelService {
     @GET("characters")
     fun getComics(): Single<CharactersResponse>
+    fun getSeries(): Single<CharactersResponse>
 }

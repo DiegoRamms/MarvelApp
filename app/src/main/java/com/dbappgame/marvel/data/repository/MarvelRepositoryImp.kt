@@ -16,5 +16,5 @@ class MarvelRepositoryImp @Inject constructor(
 
     override fun getCharacters(): Single<BaseResult<List<MarvelCharacter>>> =
         service.getComics().map { BaseResult.Success(it.toDomain()) }
-
+    //service.getSeries().map { BaseResult.Success(it.toDomain()) }
 }

@@ -11,7 +11,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface MarvelRepository {
     fun getCharacters(): Single<BaseResult<List<MarvelCharacter>>>
-
-
 }
 

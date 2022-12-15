@@ -102,15 +102,12 @@ class CharacterFragment : Fragment(), CharactersView {
     }
 
 
-
-
-
     private fun showInfo(list: List<MarvelCharacter>) {
         characterAdapter.submitList(list)
     }
 
     private fun onClickItemSeries(marvelCharacter: MarvelCharacter) {
-        requireContext().showLongToast("Series")
+        charactersListener?.onClickSeries(marvelCharacter)
     }
 
     private fun onClickItemComics(marvelCharacter: MarvelCharacter) {

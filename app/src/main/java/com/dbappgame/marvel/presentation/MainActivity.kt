@@ -8,8 +8,10 @@ import com.dbappgame.marvel.R
 import com.dbappgame.marvel.core.utils.ifNull
 import com.dbappgame.marvel.databinding.ActivityMainBinding
 import com.dbappgame.marvel.domain.model.MarvelCharacter
+import com.dbappgame.marvel.domain.model.Series
 import com.dbappgame.marvel.presentation.view.charecter.CharacterFragment
 import com.dbappgame.marvel.presentation.view.comics.ComicsFragment
+import com.dbappgame.marvel.presentation.view.series.SeriesFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
     lateinit var binding: ActivityMainBinding
     var charactersFragment: CharacterFragment? = null
     var comicsFragment: ComicsFragment? = null
+    var seriesFragment: SeriesFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +40,16 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
     }
 
     override fun onClickSeries(character: MarvelCharacter) {
+        seriesFragment = SeriesFragment.newInstance()
+        seriesFragment?.arguments = Bundle().apply {
+            putParcelableArrayList("SERIES", character.series as ArrayList<out Parcelable>)
+        }
 
+        supportFragmentManager.commit {
+            seriesFragment?.let { fragment ->
+                replace(R.id.container, fragment, SeriesFragment.TAG).addToBackStack(SeriesFragment.TAG)
+            }
+        }
     }
 
     override fun onClickComics(character: MarvelCharacter) {
