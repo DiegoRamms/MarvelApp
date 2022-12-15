@@ -15,7 +15,6 @@ abstract class PresenterModule {
     @Binds
     abstract fun bindCharacterPresenter(imp: CharactersPresenterImp): CharactersPresenter
 
-
 }
 
 

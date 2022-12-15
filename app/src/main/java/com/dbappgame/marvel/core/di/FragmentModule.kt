@@ -19,7 +19,6 @@ abstract class FragmentModule {
     abstract fun bindCharactersView(fragment: CharacterFragment): CharactersView
 
 
-
     companion object{
         @Provides
         fun bindCharacterFragment(fragment: Fragment): CharacterFragment {
