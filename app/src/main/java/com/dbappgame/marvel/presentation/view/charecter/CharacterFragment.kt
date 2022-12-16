@@ -139,6 +139,7 @@ class CharacterFragment : Fragment(), CharactersView {
         fun onClickSeries(character: MarvelCharacter)
         fun onClickComics(character: MarvelCharacter)
         fun onClickDetail(character: MarvelCharacter)
+        fun onClickDialog(character: MarvelCharacter)
     }
 
 }

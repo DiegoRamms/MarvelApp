@@ -14,6 +14,7 @@ import com.dbappgame.marvel.domain.model.Series
 import com.dbappgame.marvel.presentation.view.charecter.CharacterFragment
 import com.dbappgame.marvel.presentation.view.comics.ComicsFragment
 import com.dbappgame.marvel.presentation.view.details.DetailsFragment
+import com.dbappgame.marvel.presentation.view.details.SimpleDialogFragment
 import com.dbappgame.marvel.presentation.view.series.SeriesFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
     var comicsFragment: ComicsFragment? = null
     var seriesFragment: SeriesFragment? = null
     var detailsFragment: DetailsFragment? = null
+    var simpleDialogFragment: SimpleDialogFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,9 +71,11 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
     }
 
     override fun onClickDetail(character: MarvelCharacter) {
+        //simpleDialogFragment = SimpleDialogFragment.newInstance()
+        //simpleDialogFragment?.show(supportFragmentManager, SimpleDialogFragment.TAG)
+
         detailsFragment = DetailsFragment.newInstance()
         detailsFragment?.arguments = Bundle().apply {
-            //PENDING
             putParcelable("DETAILS",character)
         }
         supportFragmentManager.commit {
@@ -79,6 +83,11 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
                 replace(R.id.container, fragment, DetailsFragment.TAG).addToBackStack(DetailsFragment.TAG)
             }
         }
+
+    }
+
+    override fun onClickDialog(character: MarvelCharacter) {
+      //PENDING
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

@@ -51,7 +51,6 @@ class DetailsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //PENDING
         character = requireArguments().getParcelable("DETAILS")
         initView()
     }
@@ -68,8 +67,3 @@ class DetailsFragment: Fragment() {
         }
     }
 
- /*   override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-
-    }*/
