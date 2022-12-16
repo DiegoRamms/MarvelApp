@@ -24,8 +24,6 @@ abstract class FragmentModule {
         fun bindCharacterFragment(fragment: Fragment): CharacterFragment {
             return fragment as CharacterFragment
         }
-
-
     }
 
 }

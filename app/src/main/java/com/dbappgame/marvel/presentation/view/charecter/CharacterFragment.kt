@@ -115,7 +115,7 @@ class CharacterFragment : Fragment(), CharactersView {
     }
 
     private fun onClickItemDetail(marvelCharacter: MarvelCharacter) {
-        requireContext().showLongToast("Detail")
+        charactersListener?.onClickDetail(marvelCharacter)
     }
 
 

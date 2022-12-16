@@ -21,7 +21,6 @@ class CharactersPresenterImp @Inject constructor(
 
     override fun getData() {
 
-
         view.loadView(true)
         disposable = repository.getCharacters()
             .subscribeOn(Schedulers.io())

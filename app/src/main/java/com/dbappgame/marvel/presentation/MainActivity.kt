@@ -1,5 +1,6 @@
 package com.dbappgame.marvel.presentation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
@@ -7,10 +8,12 @@ import androidx.fragment.app.commit
 import com.dbappgame.marvel.R
 import com.dbappgame.marvel.core.utils.ifNull
 import com.dbappgame.marvel.databinding.ActivityMainBinding
+import com.dbappgame.marvel.databinding.FragmentDetailsBinding
 import com.dbappgame.marvel.domain.model.MarvelCharacter
 import com.dbappgame.marvel.domain.model.Series
 import com.dbappgame.marvel.presentation.view.charecter.CharacterFragment
 import com.dbappgame.marvel.presentation.view.comics.ComicsFragment
+import com.dbappgame.marvel.presentation.view.details.DetailsFragment
 import com.dbappgame.marvel.presentation.view.series.SeriesFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
     var charactersFragment: CharacterFragment? = null
     var comicsFragment: ComicsFragment? = null
     var seriesFragment: SeriesFragment? = null
+    var detailsFragment: DetailsFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +69,16 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
     }
 
     override fun onClickDetail(character: MarvelCharacter) {
-
+        detailsFragment = DetailsFragment.newInstance()
+        detailsFragment?.arguments = Bundle().apply {
+            //PENDING
+            putParcelable("DETAILS",character)
+        }
+        supportFragmentManager.commit {
+            detailsFragment?.let { fragment ->
+                replace(R.id.container, fragment, DetailsFragment.TAG).addToBackStack(DetailsFragment.TAG)
+            }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
