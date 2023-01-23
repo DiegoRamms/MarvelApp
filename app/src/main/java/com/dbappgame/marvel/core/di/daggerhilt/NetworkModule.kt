@@ -1,7 +1,7 @@
-package com.dbappgame.marvel.core.di
+package com.dbappgame.marvel.core.di.daggerhilt
 
+import androidx.viewbinding.BuildConfig
 import com.dbappgame.marvel.core.security.AuthInterceptor
-import com.dbappgame.marvel.BuildConfig
 import com.dbappgame.marvel.data.datasource.networkdatasource.service.MarvelService
 import dagger.Module
 import dagger.Provides
@@ -30,7 +30,7 @@ object NetworkModule{
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            //.baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())

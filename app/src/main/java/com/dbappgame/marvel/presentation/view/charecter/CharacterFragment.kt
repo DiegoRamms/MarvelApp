@@ -16,10 +16,11 @@ import com.dbappgame.marvel.databinding.FragmentCharactersBinding
 import com.dbappgame.marvel.domain.model.MarvelCharacter
 import com.dbappgame.marvel.presentation.adapter.CharacterAdapter
 import com.dbappgame.marvel.presentation.presenter.character.CharactersPresenter
+import com.dbappgame.marvel.presentation.presenter.character.CharactersPresenterImp
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.ext.android.inject
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class CharacterFragment : Fragment(), CharactersView {
 
     companion object {
@@ -27,8 +28,7 @@ class CharacterFragment : Fragment(), CharactersView {
         fun newInstance() = CharacterFragment()
     }
 
-    @Inject
-    lateinit var presenter: CharactersPresenter
+    val presenter: CharactersPresenter by inject()
     private var _binding: FragmentCharactersBinding? = null
     private val binding get() = _binding
     private var characters: List<MarvelCharacter>? = null

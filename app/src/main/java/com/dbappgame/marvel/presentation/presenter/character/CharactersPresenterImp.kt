@@ -12,7 +12,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class CharactersPresenterImp @Inject constructor(
+class CharactersPresenterImp (
     private val view: CharactersView,
     private val repository: MarvelRepository
 ) : CharactersPresenter {

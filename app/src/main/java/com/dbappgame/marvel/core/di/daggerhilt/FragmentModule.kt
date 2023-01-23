@@ -1,4 +1,4 @@
-package com.dbappgame.marvel.core.di
+package com.dbappgame.marvel.core.di.daggerhilt
 
 import androidx.fragment.app.Fragment
 import com.dbappgame.marvel.presentation.view.charecter.CharacterFragment
@@ -14,9 +14,9 @@ import dagger.hilt.android.components.FragmentComponent
 @InstallIn(FragmentComponent::class)
 @Module
 abstract class FragmentModule {
-
     @Binds
     abstract fun bindCharactersView(fragment: CharacterFragment): CharactersView
+
 
 
     companion object{

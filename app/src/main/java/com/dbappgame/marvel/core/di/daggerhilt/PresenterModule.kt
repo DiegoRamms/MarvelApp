@@ -1,4 +1,4 @@
-package com.dbappgame.marvel.core.di
+package com.dbappgame.marvel.core.di.daggerhilt
 
 import com.dbappgame.marvel.presentation.presenter.character.CharactersPresenter
 import com.dbappgame.marvel.presentation.presenter.character.CharactersPresenterImp

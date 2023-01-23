@@ -17,14 +17,15 @@ import com.dbappgame.marvel.presentation.view.details.DetailsFragment
 import com.dbappgame.marvel.presentation.view.details.SimpleDialogFragment
 import com.dbappgame.marvel.presentation.view.series.SeriesFragment
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.ext.android.inject
 import java.util.ArrayList
 
 
-@AndroidEntryPoint
+
 class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
 
     lateinit var binding: ActivityMainBinding
-    var charactersFragment: CharacterFragment? = null
+    val charactersFragment: CharacterFragment by inject()
     var comicsFragment: ComicsFragment? = null
     var seriesFragment: SeriesFragment? = null
     var detailsFragment: DetailsFragment? = null
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
         setContentView(binding.root)
 
         savedInstanceState.ifNull {
-            charactersFragment = CharacterFragment.newInstance()
             supportFragmentManager.commit {
                 charactersFragment?.let { fragment ->
                     replace(R.id.container, fragment, CharacterFragment.TAG)
@@ -98,8 +98,7 @@ class MainActivity : AppCompatActivity(), CharacterFragment.CharactersListener {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        charactersFragment = supportFragmentManager.getFragment(savedInstanceState,
-            CharacterFragment.TAG) as CharacterFragment
+
     }
 
 }
